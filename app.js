@@ -68,6 +68,13 @@ fetch('https://jsonplaceholder.typicode.com/posts', {
     method: 'DELETE',
 })
 
-
-
+// random user api 
+const randomBuddy = () => {
+    fetch('https://randomuser.me/api')
+        .then(res => res.json())
+        .then(data => buddyLoad(data))
+}
+const buddyLoad = (data) => {
+    console.log(data)
+}
 
