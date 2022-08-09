@@ -92,21 +92,41 @@ const allCountries = () => {
 }
 const displayCountries = countries => {
     const countriesDiv = document.getElementById('countries');
-    countries.slice(0, 10).forEach(country => {
-        console.log(country)
+    countries.forEach(country => {
         const div = document.createElement('div')
         div.classList.add('country')
-        const h4 = document.createElement('h4')
-        h4.innerText = `Country: ${country.name.common}`;
-        div.appendChild(h4)
-        const p1 = document.createElement('p')
-        p1.innerText = `Capital: ${country.capital}`;
-        div.appendChild(p1)
-        const p = document.createElement('p')
-        p.innerText = `Official Name: ${country.name.official}`;
-        div.appendChild(p)
+        div.innerHTML = `
+        <h4>${country.name.common}</h4>
+        <p>Capital: ${country.capital}</p>
+        <p>Official Name: ${country.name.official}</p>
+        <button class="small-btn" onclick="countryDetails('${country.name.common}')">Details</button>
+        `;
         countriesDiv.appendChild(div)
-
+        // const h4 = document.createElement('h4')
+        // h4.innerText = `Country: ${country.name.common}`;
+        // div.appendChild(h4)
+        // const p1 = document.createElement('p')
+        // p1.innerText = `Capital: ${country.capital}`;
+        // div.appendChild(p1)
+        // const p = document.createElement('p')
+        // p.innerText = `Official Name: ${country.name.official}`;
+        // div.appendChild(p)
     })
 }
+allCountries()
+const countryDetails = name => {
+    const url = `https://restcountries.com/v3.1/name/${name}`
+    fetch(url)
+        .then(res => res.json())
+        .then(data => showDetails(data[0]))
+}
+const showDetails = (data) => {
+    const details = document.getElementById('details')
+    details.innerHTML = `
+<p>Continents: ${data.continents}</p>
+<p>Population: ${data.population}</p>
+<img src="${data.flags.png}">
+`
+}
+
 
