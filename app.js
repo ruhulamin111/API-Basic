@@ -12,8 +12,17 @@ const parse = JSON.parse(stringified);
 function dataLoad() {
     fetch('https://jsonplaceholder.typicode.com/users')
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => displayData(data))
 };
+function displayData(data) {
+    console.log(data)
+    const div = document.getElementById('users');
+    for (const user of data) {
+        const p = document.createElement('p');
+        p.innerText = `Hey, There is a ${user.name} and her email is ${user.email}.`
+        div.appendChild(p);
+    }
+}
 
 
 
