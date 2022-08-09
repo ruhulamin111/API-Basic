@@ -36,7 +36,7 @@ fetch('https://jsonplaceholder.typicode.com/posts', {
     }
 })
     .then(res => res.json())
-    .then(data => console.log(data));
+    .then(data => (data));
 // put method
 fetch('https://jsonplaceholder.typicode.com/posts', {
     method: 'PUT',
@@ -49,7 +49,7 @@ fetch('https://jsonplaceholder.typicode.com/posts', {
     }
 })
     .then(res => res.json())
-    .then(data => console.log(data));
+    .then(data => (data));
 // patch method
 fetch('https://jsonplaceholder.typicode.com/posts', {
     method: 'PATCH',
@@ -62,7 +62,7 @@ fetch('https://jsonplaceholder.typicode.com/posts', {
     }
 })
     .then(res => res.json())
-    .then(data => console.log(data));
+    .then(data => (data));
 // delete method
 fetch('https://jsonplaceholder.typicode.com/posts', {
     method: 'DELETE',
@@ -70,11 +70,18 @@ fetch('https://jsonplaceholder.typicode.com/posts', {
 
 // random user api 
 const randomBuddy = () => {
-    fetch('https://randomuser.me/api')
+    fetch('https://randomuser.me/api/?results=5')
         .then(res => res.json())
         .then(data => buddyLoad(data))
 }
-const buddyLoad = (data) => {
+const buddyLoad = data => {
     console.log(data)
+    const buddy = data.results;
+    const buddyShow = document.getElementById('random-users')
+    for (const user of buddy) {
+        const p = document.createElement('p')
+        p.innerText = `Hey there is ${user.name.first}`
+        buddyShow.appendChild(p);
+    }
 }
 
