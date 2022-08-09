@@ -75,12 +75,11 @@ const randomBuddy = () => {
         .then(data => buddyLoad(data))
 }
 const buddyLoad = data => {
-    console.log(data)
     const buddy = data.results;
     const buddyShow = document.getElementById('random-users')
     for (const user of buddy) {
         const p = document.createElement('p')
-        p.innerText = `Hey there is ${user.name.first}`
+        p.innerText = `Hey there is ${user.name.first} and he is ${user.registered.age}`
         buddyShow.appendChild(p);
     }
 }
