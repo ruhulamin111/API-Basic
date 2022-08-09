@@ -1,0 +1,17 @@
+.country {
+    background-color: lightsteelblue;
+    border-radius: 1em;
+    border: 2px solid darkred;
+    margin: 1em;
+    padding: 1em;
+}
+
+.btn {
+    padding: 1em;
+    margin: 1em;
+    background-color: dodgerblue;
+    cursor: pointer;
+    border: 1px solid lightcoral;
+    color: white;
+    border-radius: 1em;
+}

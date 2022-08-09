@@ -84,3 +84,29 @@ const buddyLoad = data => {
     }
 }
 
+// rest counties api set 
+const allCountries = () => {
+    fetch('https://restcountries.com/v3.1/all')
+        .then(res => res.json())
+        .then(data => displayCountries(data));
+}
+const displayCountries = countries => {
+    const countriesDiv = document.getElementById('countries');
+    countries.slice(0, 10).forEach(country => {
+        console.log(country)
+        const div = document.createElement('div')
+        div.classList.add('country')
+        const h4 = document.createElement('h4')
+        h4.innerText = `Country: ${country.name.common}`;
+        div.appendChild(h4)
+        const p1 = document.createElement('p')
+        p1.innerText = `Capital: ${country.capital}`;
+        div.appendChild(p1)
+        const p = document.createElement('p')
+        p.innerText = `Official Name: ${country.name.official}`;
+        div.appendChild(p)
+        countriesDiv.appendChild(div)
+
+    })
+}
+
