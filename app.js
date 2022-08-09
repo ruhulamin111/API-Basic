@@ -14,8 +14,8 @@ function dataLoad() {
         .then(response => response.json())
         .then(data => displayData(data))
 };
+// display on site 
 function displayData(data) {
-    console.log(data)
     const div = document.getElementById('users');
     for (const user of data) {
         const p = document.createElement('p');
@@ -23,6 +23,51 @@ function displayData(data) {
         div.appendChild(p);
     }
 }
+
+// post method 
+fetch('https://jsonplaceholder.typicode.com/posts', {
+    method: 'POST',
+    body: JSON.stringify({
+        user: 'new user',
+        email: 'user@gmail.com'
+    }),
+    headers: {
+        'Content-type': 'application/json; charshet=UTF-8'
+    }
+})
+    .then(res => res.json())
+    .then(data => console.log(data));
+// put method
+fetch('https://jsonplaceholder.typicode.com/posts', {
+    method: 'PUT',
+    body: JSON.stringify({
+        user: 'new user',
+        email: 'user@gmail.com'
+    }),
+    headers: {
+        'Content-type': 'application/json; charshet=UTF-8'
+    }
+})
+    .then(res => res.json())
+    .then(data => console.log(data));
+// patch method
+fetch('https://jsonplaceholder.typicode.com/posts', {
+    method: 'PATCH',
+    body: JSON.stringify({
+        user: 'new user',
+        email: 'user@gmail.com'
+    }),
+    headers: {
+        'Content-type': 'application/json; charshet=UTF-8'
+    }
+})
+    .then(res => res.json())
+    .then(data => console.log(data));
+// delete method
+fetch('https://jsonplaceholder.typicode.com/posts', {
+    method: 'DELETE',
+})
+
 
 
 
