@@ -1,3 +1,4 @@
+// json stringified and parse
 const address = {
     village: 'shukhnagar',
     post: 2030,
@@ -5,7 +6,14 @@ const address = {
     zila: 'mayabinagar',
 };
 const stringified = JSON.stringify(address);
-console.log(stringified);
 const parse = JSON.parse(stringified);
-console.log(parse);
+
+// load data 
+function dataLoad() {
+    fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response => response.json())
+        .then(data => console.log(data))
+};
+
+
 
