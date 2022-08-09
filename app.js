@@ -113,7 +113,7 @@ const displayCountries = countries => {
         // div.appendChild(p)
     })
 }
-allCountries()
+
 const countryDetails = name => {
     const url = `https://restcountries.com/v3.1/name/${name}`
     fetch(url)
@@ -128,5 +128,3 @@ const showDetails = (data) => {
 <img src="${data.flags.png}">
 `
 }
-
-
